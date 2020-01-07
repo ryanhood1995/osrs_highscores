@@ -9,7 +9,21 @@
 
 from robobrowser import RoboBrowser
 from bs4 import BeautifulSoup
-import usernames
+import private
+
+def get_username(first_name):
+    if (first_name == 'ryan'):
+        return private.RYAN_USERNAME
+    if (first_name == 'kevin'):
+        return private.KEVIN_USERNAME
+    if (first_name == 'brevin'):
+        return private.BREVIN_USERNAME
+    if (first_name == 'isaac'):
+        return private.ISAAC_USERNAME
+    if (first_name == 'alex'):
+        return private.ALEX_USERNAME
+    if (first_name == 'aaron'):
+        return private.AARON_USERNAME
 
 def fetch_highscores(first_name):
     # First, a RoboBrowser opens the highscores list.
@@ -24,7 +38,7 @@ def fetch_highscores(first_name):
     # 'user1' is the name attribute of the form.  We get the username from the first name using
     # the file 'usernames'.  The purpose of a separate file for usernames is so I can present
     # this code but keep my friends and my usernames a secret.
-    form.fields['user1'].value = usernames.get_username(first_name)
+    form.fields['user1'].value = get_username(first_name)
 
     # Sumbit the form.  We are now in first_name's highscores page.
     br.submit_form(form)
